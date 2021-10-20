@@ -79,4 +79,23 @@ def fib(n)
     return [0, 1] if n == 1
 
     array = fib(n - 1)
+    array << array[-2] + array[-1]
+end
+
+
+def iter_fib(n)
+    return [0] if n == 0
+    return [0, 1] if n == 1
+
+    new_arr = [0, 1]
+    
+    (n - 1).times {new_arr << new_arr[-2] + new_arr[-1]}
+    
+    new_arr
+end
+
+
+def binary_search
+
+
 end
