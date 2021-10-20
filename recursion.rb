@@ -1,3 +1,5 @@
+require "byebug"
+
 def rec_range(first, last)
     return [] if last < first
     return [first] if first == last || last - first == first
@@ -53,12 +55,11 @@ class Array  #["a", "b", "c"]
     def deep_dup
         return nil if self.empty?
         return self if !self.is_a?(Array)
-
         new_arr = []
 
         self.each do |ele|
             if ele.is_a?(Array)
-                ele.deep_dup
+                new_arr << ele.deep_dup
             else
                 new_arr << ele
             end
@@ -67,7 +68,15 @@ class Array  #["a", "b", "c"]
     end
 end
 
+# p [1, 1, [2], [3, [4]]].deep_dup
+# p [1, [2,3,[4]], [2], [3, [4]]].deep_dup
 
+# --------------------------------------------------------------------------------
+# Fibonacci
 
+def fib(n)
+    return [0] if n == 0
+    return [0, 1] if n == 1
 
-p [1, 1, [2], [3, [4]]].deep_dup
+    array = fib(n - 1)
+end
