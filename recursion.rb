@@ -49,8 +49,25 @@ end
 # --------------------------------------------------------------------------------
 # Deep Dup
 
-class Array
+class Array  #["a", "b", "c"]
     def deep_dup
-        
+        return nil if self.empty?
+        return self if !self.is_a?(Array)
+
+        new_arr = []
+
+        self.each do |ele|
+            if ele.is_a?(Array)
+                ele.deep_dup
+            else
+                new_arr << ele
+            end
+        end
+        new_arr
     end
 end
+
+
+
+
+p [1, 1, [2], [3, [4]]].deep_dup
