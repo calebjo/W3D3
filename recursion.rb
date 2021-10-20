@@ -107,10 +107,36 @@ def bsearch(array, target)
     end
 end
 
-p bsearch([1, 2, 3], 1) # => 0
-p bsearch([2, 3, 4, 5], 3) # => 1
-p bsearch([2, 4, 6, 8, 10], 6) # => 2
-p bsearch([1, 3, 4, 5, 9], 5) # => 3
-p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+# p bsearch([1, 2, 3], 1) # => 0
+# p bsearch([2, 3, 4, 5], 3) # => 1
+# p bsearch([2, 4, 6, 8, 10], 6) # => 2
+# p bsearch([1, 3, 4, 5, 9], 5) # => 3
+# p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
+# p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
+# p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+
+
+def merge_sort(arr)
+    midpoint = arr.length / 2
+    return nil if arr.length == 0
+    return arr.first if arr.length == 1
+
+    if arr.length == 1
+
+    else
+        
+    end
+
+
+    first_half = arr[0..midpoint]
+
+    second_half = arr[midpoint + 1..-1]
+
+    merge_sort(first_half)
+
+    merge_sort(second_half)
+end
+
+def merge(arr1, arr2)
+
+end
