@@ -94,6 +94,8 @@ def iter_fib(n)
     new_arr
 end
 
+# --------------------------------------------------------------------------------
+# Binary Search
 
 def bsearch(array, target)
     midpoint = array.length / 2 
@@ -115,28 +117,45 @@ end
 # p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
 # p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
 
+# --------------------------------------------------------------------------------
+# Merge Sort
 
 def merge_sort(arr)
     midpoint = arr.length / 2
-    return nil if arr.length == 0
-    return arr.first if arr.length == 1
+    return arr if arr.length == 1
 
-    first_half = arr[0..midpoint]
-    second_half = arr[midpoint + 1..-1]
+    first_half = arr[0..(midpoint-1)]
+    second_half = arr[midpoint..-1]
 
     merge(merge_sort(first_half), merge_sort(second_half))
 end
 
 def merge(arr1, arr2)
     new_arr = []
-    arr1.each do |ele|
-        arr2.each do |ele2|
-            if ele2 < ele && !new_arr.include?(ele2)
-                new_arr.push(ele2)
-            else
-                new_arr.push(ele) if !new_arr.include?(ele)
-            end
+    
+    while (!arr1.empty? && !arr2.empty?)
+        if arr1.first < arr2.first
+            new_arr << arr1.shift
+        else
+            new_arr << arr2.shift
         end
     end
-    new_arr << (arr1 + arr2).max
+    new_arr + arr1 + arr2
 end
+
+# p merge_sort([1,4,3,2])
+# p merge_sort([1,3,6,22,66,44,100])
+# p merge_sort([38,27,43,3,9,82,10])
+
+# --------------------------------------------------------------------------------
+# Array Subsets
+
+def subsets(array)
+    return [[]] if array.length == 0
+    return [[],array] if array.length == 1
+
+    #subsets(array.length - 1).push(array)
+    subsets(array[0...-1]) << subsets(array.last) # => [[], [1], [2], [1, 2],TURNS INTO [3], [1, 3], [2, 3], [1, 2, 3]]
+end
+
+p subsets([1,2,3])
