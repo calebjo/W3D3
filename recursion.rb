@@ -121,22 +121,22 @@ def merge_sort(arr)
     return nil if arr.length == 0
     return arr.first if arr.length == 1
 
-    if arr.length == 1
-
-    else
-        
-    end
-
-
     first_half = arr[0..midpoint]
-
     second_half = arr[midpoint + 1..-1]
 
-    merge_sort(first_half)
-
-    merge_sort(second_half)
+    merge(merge_sort(first_half), merge_sort(second_half))
 end
 
 def merge(arr1, arr2)
-
+    new_arr = []
+    arr1.each do |ele|
+        arr2.each do |ele2|
+            if ele2 < ele && !new_arr.include?(ele2)
+                new_arr.push(ele2)
+            else
+                new_arr.push(ele) if !new_arr.include?(ele)
+            end
+        end
+    end
+    new_arr << (arr1 + arr2).max
 end
